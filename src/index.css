@@ -1,1 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
 @import "tailwindcss";
+
+:root {
+  --background: #f2f2f2;
+  --foreground: #292929;
+}
+
+@theme {
+  --color-background: #B2C248;
+  --color-foreground: #292929;
+  --font-serif: "Libertinus Serif", serif;
+}
+
+@theme: {
+  extend: {
+    fontFamily: {
+      serif: ['Libertinus Serif', 'serif'],
+    }
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-serif);
+}
