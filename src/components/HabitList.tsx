@@ -1,8 +1,8 @@
+import HabitItem from "./HabitItem"
+
 const HabitList = () => {
     const habits = [
-        { id: 1, name: "Coding" }, 
-        { id: 2, name: "Watching netflix" }, 
-        { id: 3, name: "Hiking" }
+        { id: "1", name: "Coding" }, 
     ]
     if (habits.length === 0) {
         return (
@@ -13,7 +13,7 @@ const HabitList = () => {
     return (
         <div className="flex flex-col gap-3">
           {habits.map(habit => (
-            <h1 key={habit.id}>{habit.name}</h1>
+            <HabitItem key={habit.id} habit={habit} />
           ))}
         </div>
     )
