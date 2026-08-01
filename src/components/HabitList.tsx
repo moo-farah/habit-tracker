@@ -1,12 +1,16 @@
 import HabitItem from "./HabitItem"
 
-const HabitList = () => {
-    const habits = [
-        { id: "1", name: "Coding" }, 
-    ]
+export type Habit = {id: string; name: string}
+
+type HabitListProps = {
+    habits: Habit[]
+}
+
+const HabitList = ({ habits }: HabitListProps) => {
     if (habits.length === 0) {
         return (
-            <p className="text-center text-xl py-12">No habits yet. Add one above to get started!
+            <p className="text-center text-xl py-12">
+                No habits yet. Add one above to get started!
             </p>
         )
     }

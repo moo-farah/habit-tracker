@@ -1,13 +1,12 @@
-import { eachDayOfInterval, endOfWeek, format, isFuture, startOfWeek } from "date-fns";
+import { eachDayOfInterval, endOfWeek, format, startOfWeek } from "date-fns";
 import { Button } from "./Button";
+import type { Habit } from "./HabitList";
 
-
-type HabitProps = {
-    habit: {id: string; name: string}
+type HabitItemProps = {
+    habit: Habit
 }
 
-
-const HabitItem = ({ habit }: HabitProps) => {
+const HabitItem = ({ habit }: HabitItemProps) => {
     const visibleDates = eachDayOfInterval({start: startOfWeek(new Date(), { weekStartsOn: 1 }),
         end: endOfWeek(new Date(), { weekStartsOn: 1 })
     })
@@ -18,11 +17,11 @@ const HabitItem = ({ habit }: HabitProps) => {
                 <span className="font-medium">{habit.name}</span>
                 <span className="text-sm text-amber-400">❤️‍🔥 3</span>
             </div>
-            <Button>Delete</Button>
+            <Button variant="ghost-desctructive" className="text-sm">Delete</Button>
         </div>
         <div className="flex gap-1.5">
             {visibleDates.map(date => (
-                <Button key={date.toISOString()} disabled={isFuture(date)}>
+                <Button className="flex flex-1 flex-col items-center gap-0.5 rounded-lg" key={date.toISOString()}>
                     <span className="font-medium">{format(date, "EEE")}</span>
                     <span>{format(date, "d")}</span>
                 </Button>
